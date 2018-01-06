@@ -45,6 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\SexType.cs" />
+    <Compile Include="Control\SqlHelper.cs" />
+    <Compile Include="Model\Class.cs" />
+    <Compile Include="Model\Grade.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\Sign.cs" />
+    <Compile Include="Model\Teacher.cs" />
     <Compile Include="View\Client.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,7 +59,7 @@
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Utilities.cs" />
-    <Compile Include="Model\StudentInfo.cs" />
+    <Compile Include="Model\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\StudentRegisterForm.cs">

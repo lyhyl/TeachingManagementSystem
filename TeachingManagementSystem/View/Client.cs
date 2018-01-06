@@ -48,7 +48,7 @@ namespace TeachingManagementSystem.View
             }
             return true;
         }
-
+        
         private void loginButton_Click(object sender, EventArgs e)
         {
             if (!ValidateInfo())

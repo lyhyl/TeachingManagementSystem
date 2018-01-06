@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TeachingManagementSystem.Model
 {
-    class StudentInfo
+    public class Message
     {
+        public string Id { set; get; }
+        public string Info { set; get; }
     }
 }
