@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeachingManagementSystem.BLL;
+using TeachingManagementSystem.Model;
 
-namespace TeachingManagementSystem.View
+namespace TeachingManagementSystem.UI
 {
     public partial class Client : Form
     {
@@ -48,13 +50,68 @@ namespace TeachingManagementSystem.View
             }
             return true;
         }
-        
+
+        /// <summary>
+        /// 尝试登录
+        /// </summary>
+        /// <returns>若成功登陆则返回一个对应的User，否则返回null</returns>
+        private User Login()
+        {
+            string name = userTextBox.Text;
+            string pass = passwordTextBox.Text;
+
+            switch (authTypeComboBox.SelectedIndex)
+            {
+                case 0:
+                    return Manager.StudentLogin(name, pass);
+                case 1:
+                    return Manager.TeacherLogin(name, pass);
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// 创建对应的窗口
+        /// </summary>
+        /// <param name="user">用户</param>
+        private void CreateForm(User user)
+        {
+            Form form = null;
+            switch (authTypeComboBox.SelectedIndex)
+            {
+                case 0:
+                    form = new StudentClient(user as Student);
+                    break;
+                case 1:
+                    form = new TeacherClient(user as Teacher);
+                    break;
+            }
+            // Client closed
+            form.FormClosed += (s, ea) => Close();
+
+            Hide();
+            form.Show();
+        }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             if (!ValidateInfo())
                 return;
-            // TODO : login
 
+            User user = Login();
+            if (user == null)
+            {
+                MessageBox.Show(
+                    "账号密码不匹配",
+                    "错误",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                CreateForm(user);
+            }
         }
 
         private void registerButton_Click(object sender, EventArgs e)

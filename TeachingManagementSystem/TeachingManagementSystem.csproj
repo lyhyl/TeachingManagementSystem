@@ -45,36 +45,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BLLConfig.cs" />
+    <Compile Include="BLL\Manager.cs" />
     <Compile Include="Common\SexType.cs" />
-    <Compile Include="Control\SqlHelper.cs" />
+    <Compile Include="DAL\SqlHelper.cs" />
     <Compile Include="Model\Class.cs" />
     <Compile Include="Model\Grade.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Sign.cs" />
     <Compile Include="Model\Teacher.cs" />
-    <Compile Include="View\Client.cs">
+    <Compile Include="Model\User.cs" />
+    <Compile Include="UI\Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Client.Designer.cs">
+    <Compile Include="UI\Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Utilities.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\StudentRegisterForm.cs">
+    <Compile Include="UI\StudentClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\StudentRegisterForm.Designer.cs">
+    <Compile Include="UI\StudentClient.Designer.cs">
+      <DependentUpon>StudentClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StudentRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\StudentRegisterForm.Designer.cs">
       <DependentUpon>StudentRegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TeacherRegisterForm.cs">
+    <Compile Include="UI\TeacherClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\TeacherRegisterForm.Designer.cs">
+    <Compile Include="UI\TeacherClient.Designer.cs">
+      <DependentUpon>TeacherClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TeacherRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TeacherRegisterForm.Designer.cs">
       <DependentUpon>TeacherRegisterForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Client.resx">
+    <EmbeddedResource Include="UI\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -86,10 +101,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\StudentRegisterForm.resx">
+    <EmbeddedResource Include="UI\StudentClient.resx">
+      <DependentUpon>StudentClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StudentRegisterForm.resx">
       <DependentUpon>StudentRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\TeacherRegisterForm.resx">
+    <EmbeddedResource Include="UI\TeacherRegisterForm.resx">
       <DependentUpon>TeacherRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

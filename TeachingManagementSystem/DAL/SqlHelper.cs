@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TeachingManagementSystem.Control
+namespace TeachingManagementSystem.DAL
 {
     public class SqlHelper
     {

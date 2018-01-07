@@ -1,4 +1,4 @@
-﻿namespace TeachingManagementSystem.View
+﻿namespace TeachingManagementSystem.UI
 {
     partial class TeacherRegisterForm
     {
