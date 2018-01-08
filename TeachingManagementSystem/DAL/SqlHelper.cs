@@ -24,10 +24,10 @@ namespace TeachingManagementSystem.DAL
                 SqlConnectionStringBuilder connStr = new SqlConnectionStringBuilder()
                 {
                     DataSource = source,
-                    InitialCatalog = "DataBase",
+                    InitialCatalog = "TMS",
                     UserID = user,
                     Password = pass,
-                    NetworkLibrary = "DBMSSOCN"
+                    //NetworkLibrary = "DBMSSOCN" // only for ip connection
                 };
                 var connection = new SqlConnection(connStr.ToString());
                 connection.Open();

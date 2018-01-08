@@ -9,7 +9,7 @@ namespace TeachingManagementSystem.BLL
     internal class BLLConfig
     {
         public static readonly string AdminUserName = "sa";
-        public static readonly string AdminPassword = "123";
-        public static readonly string DefaultSource = "127.0.0.1";
+        public static readonly string AdminPassword = "112358";
+        public static readonly string DefaultSource = @"WINGKOU\SQLEXPRESS";
     }
 }

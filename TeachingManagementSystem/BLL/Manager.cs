@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,20 +14,27 @@ namespace TeachingManagementSystem.BLL
     {
         public static Student StudentLogin(string name, string password)
         {
-            //var conn = SqlHelper.OpenDatabase(
-            //    BLLConfig.AdminUserName,
-            //    BLLConfig.AdminPassword,
-            //    BLLConfig.DefaultSource);
+            var conn = SqlHelper.OpenDatabase(
+                BLLConfig.AdminUserName,
+                BLLConfig.AdminPassword,
+                BLLConfig.DefaultSource);
 
-            // TODO : do some validation
-            // e.g. :
-            // var result = SqlHelper.ExecuteScalar(conn, "select ...")
-            // if(valid) {
-            //     return new Student(conn);
-            // }
-
-            // validate failed
-            return new Student(null) { Name = "abc", Id = "123" }; // Just for test! **DO NOT** release!
+            string cmd = "select * from Account where \"user\"=@u and \"password\"=@p and \"isStudent\"=1";
+            var result = SqlHelper.ExecuteScalar(
+                conn, cmd,
+                parameters : new SqlParameter[] {
+                    new SqlParameter("@u", SqlDbType.NVarChar, 50) { Value = name },
+                    new SqlParameter("@p", SqlDbType.NVarChar, 50) { Value = password }
+                });
+            if (result != null)
+            {
+                return new Student(conn) { Name = name, Id = name };
+            }
+            else
+            {
+                conn.Close();
+                return null;
+            }
         }
 
         public static Teacher TeacherLogin(string name, string password)
@@ -35,15 +44,22 @@ namespace TeachingManagementSystem.BLL
                 BLLConfig.AdminPassword,
                 BLLConfig.DefaultSource);
 
-            // TODO : do some validation
-            // e.g. :
-            // var result = SqlHelper.ExecuteScalar(conn, "select ...")
-            // if(valid) {
-            //     return new Teacher(conn);
-            // }
-
-            // validate failed
-            return null;
+            string cmd = "select * from Account where \"user\"=@u and \"password\"=@p and \"isStudent\"=0";
+            var result = SqlHelper.ExecuteScalar(
+                conn, cmd,
+                parameters: new SqlParameter[] {
+                    new SqlParameter("@u", SqlDbType.NVarChar, 50) { Value = name },
+                    new SqlParameter("@p", SqlDbType.NVarChar, 50) { Value = password }
+                });
+            if (result != null)
+            {
+                return new Teacher(conn) { Name = name, Id = name };
+            }
+            else
+            {
+                conn.Close();
+                return null;
+            }
         }
     }
 }
