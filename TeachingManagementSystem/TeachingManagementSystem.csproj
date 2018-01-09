@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,7 +54,6 @@
     <Compile Include="Model\Grade.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Sign.cs" />
-    <Compile Include="Model\Teacher.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="UI\Client.cs">
       <SubType>Form</SubType>
@@ -62,7 +62,6 @@
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Utilities.cs" />
-    <Compile Include="Model\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\StudentClient.cs">
@@ -106,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\StudentRegisterForm.resx">
       <DependentUpon>StudentRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TeacherClient.resx">
+      <DependentUpon>TeacherClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TeacherRegisterForm.resx">
       <DependentUpon>TeacherRegisterForm.cs</DependentUpon>

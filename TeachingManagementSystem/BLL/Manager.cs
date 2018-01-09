@@ -12,54 +12,40 @@ namespace TeachingManagementSystem.BLL
 {
     public class Manager
     {
-        public static Student StudentLogin(string name, string password)
+        public static User Login(string id, string password)
         {
             var conn = SqlHelper.OpenDatabase(
                 BLLConfig.AdminUserName,
                 BLLConfig.AdminPassword,
                 BLLConfig.DefaultSource);
 
-            string cmd = "select * from Account where \"user\"=@u and \"password\"=@p and \"isStudent\"=1";
-            var result = SqlHelper.ExecuteScalar(
-                conn, cmd,
-                parameters : new SqlParameter[] {
-                    new SqlParameter("@u", SqlDbType.NVarChar, 50) { Value = name },
-                    new SqlParameter("@p", SqlDbType.NVarChar, 50) { Value = password }
-                });
-            if (result != null)
-            {
-                return new Student(conn) { Name = name, Id = name };
-            }
-            else
-            {
-                conn.Close();
-                return null;
-            }
-        }
-
-        public static Teacher TeacherLogin(string name, string password)
-        {
-            var conn = SqlHelper.OpenDatabase(
-                BLLConfig.AdminUserName,
-                BLLConfig.AdminPassword,
-                BLLConfig.DefaultSource);
-
-            string cmd = "select * from Account where \"user\"=@u and \"password\"=@p and \"isStudent\"=0";
-            var result = SqlHelper.ExecuteScalar(
+            string cmd = "select name,brand,isStudent,sex,phone from Account where \"id\"=@u and \"password\"=@p";
+            var result = SqlHelper.ExecuteDataTable(
                 conn, cmd,
                 parameters: new SqlParameter[] {
-                    new SqlParameter("@u", SqlDbType.NVarChar, 50) { Value = name },
+                    new SqlParameter("@u", SqlDbType.NVarChar, 50) { Value = id },
                     new SqlParameter("@p", SqlDbType.NVarChar, 50) { Value = password }
                 });
-            if (result != null)
+
+            if (result.Rows.Count == 1 &&
+                result.Rows[0].ItemArray.Length == 5)
             {
-                return new Teacher(conn) { Name = name, Id = name };
+                var dat = result.Rows[0].ItemArray;
+                return new User(conn, id,
+                    dat[0] as string,
+                    dat[1] as string,
+                    (bool)dat[2],
+                    (int)dat[3],
+                    dat[4] as string);
             }
             else
-            {
-                conn.Close();
                 return null;
-            }
+        }
+
+        public static IEnumerable<Class> GetAssociatedClasses()
+        {
+
+            return Enumerable.Empty<Class>();
         }
     }
 }

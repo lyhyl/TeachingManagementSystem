@@ -40,6 +40,14 @@ namespace TeachingManagementSystem.UI
                       MessageBoxIcon.Error);
                 return false;
             }
+            else if (!int.TryParse(userTextBox.Text, out int id))
+            {
+                MessageBox.Show("请输入合法账号",
+                      "错误",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error);
+                return false;
+            }
             if (string.IsNullOrEmpty(passwordTextBox.Text))
             {
                 MessageBox.Show("请输入密码",
@@ -63,9 +71,9 @@ namespace TeachingManagementSystem.UI
             switch (authTypeComboBox.SelectedIndex)
             {
                 case 0:
-                    return Manager.StudentLogin(name, pass);
+                    return Manager.Login(name, pass);
                 case 1:
-                    return Manager.TeacherLogin(name, pass);
+                    return Manager.Login(name, pass);
                 default:
                     return null;
             }
@@ -81,10 +89,10 @@ namespace TeachingManagementSystem.UI
             switch (authTypeComboBox.SelectedIndex)
             {
                 case 0:
-                    form = new StudentClient(user as Student);
+                    form = new StudentClient(user);
                     break;
                 case 1:
-                    form = new TeacherClient(user as Teacher);
+                    form = new TeacherClient(user);
                     break;
             }
             // Client closed

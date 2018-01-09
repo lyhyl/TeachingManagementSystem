@@ -13,9 +13,9 @@ namespace TeachingManagementSystem.UI
 {
     public partial class StudentClient : Form
     {
-        private Student student;
+        private User student;
 
-        public StudentClient(Student user)
+        public StudentClient(User user)
         {
             student = user ?? throw new ArgumentNullException(nameof(user));
 
@@ -27,6 +27,7 @@ namespace TeachingManagementSystem.UI
         private void Customize()
         {
             Text = $"欢迎{student.Name}!(学号{student.Id})";
+            splitContainer1.SplitterDistance = splitContainer1.Width * 3 / 5;
         }
     }
 }
