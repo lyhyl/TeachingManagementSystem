@@ -13,9 +13,9 @@ namespace TeachingManagementSystem.UI
 {
     public partial class TeacherClient : Form
     {
-        private User teacher;
+        private Teacher teacher;
 
-        public TeacherClient(User user)
+        public TeacherClient(Teacher user)
         {
             teacher = user ?? throw new ArgumentNullException(nameof(user));
 

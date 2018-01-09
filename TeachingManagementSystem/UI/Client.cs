@@ -71,9 +71,9 @@ namespace TeachingManagementSystem.UI
             switch (authTypeComboBox.SelectedIndex)
             {
                 case 0:
-                    return Manager.Login(name, pass);
+                    return Manager.StudentLogin(name, pass);
                 case 1:
-                    return Manager.Login(name, pass);
+                    return Manager.TeacherLogin(name, pass);
                 default:
                     return null;
             }
@@ -89,10 +89,10 @@ namespace TeachingManagementSystem.UI
             switch (authTypeComboBox.SelectedIndex)
             {
                 case 0:
-                    form = new StudentClient(user);
+                    form = new StudentClient(user as Student);
                     break;
                 case 1:
-                    form = new TeacherClient(user);
+                    form = new TeacherClient(user as Teacher);
                     break;
             }
             // Client closed

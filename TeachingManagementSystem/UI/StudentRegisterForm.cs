@@ -64,11 +64,10 @@ namespace TeachingManagementSystem.UI
             if (!ValidateInfo())
                 return;
 
-            int id = Manager.Register(
+            int id = Manager.StudentRegister(
                 passwordTextBox.Text,
                 nameTextBox.Text,
                 collegeTextBox.Text,
-                true,
                 maleRadioButton.Checked ? SexType.Male : SexType.Female,
                 phoneTextBox.Text);
 
