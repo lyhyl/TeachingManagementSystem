@@ -42,7 +42,7 @@
             this.maleRadioButton = new System.Windows.Forms.RadioButton();
             this.femaleRadioButton = new System.Windows.Forms.RadioButton();
             this.registerButton = new System.Windows.Forms.Button();
-            this.canccelButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nameTextBox
@@ -54,8 +54,10 @@
             // 
             // idTextBox
             // 
+            this.idTextBox.Enabled = false;
             this.idTextBox.Location = new System.Drawing.Point(73, 38);
             this.idTextBox.Name = "idTextBox";
+            this.idTextBox.ReadOnly = true;
             this.idTextBox.Size = new System.Drawing.Size(199, 20);
             this.idTextBox.TabIndex = 1;
             // 
@@ -166,26 +168,25 @@
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
-            // canccelButton
+            // cancelButton
             // 
-            this.canccelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.canccelButton.Location = new System.Drawing.Point(197, 168);
-            this.canccelButton.Name = "canccelButton";
-            this.canccelButton.Size = new System.Drawing.Size(75, 23);
-            this.canccelButton.TabIndex = 8;
-            this.canccelButton.Text = "取消";
-            this.canccelButton.UseVisualStyleBackColor = true;
-            this.canccelButton.Click += new System.EventHandler(this.canccelButton_Click);
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(197, 168);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 8;
+            this.cancelButton.Text = "取消";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // StudentRegisterForm
             // 
             this.AcceptButton = this.registerButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.canccelButton;
+            this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(284, 205);
             this.ControlBox = false;
-            this.Controls.Add(this.canccelButton);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.femaleRadioButton);
             this.Controls.Add(this.maleRadioButton);
@@ -225,6 +226,6 @@
         private System.Windows.Forms.RadioButton maleRadioButton;
         private System.Windows.Forms.RadioButton femaleRadioButton;
         private System.Windows.Forms.Button registerButton;
-        private System.Windows.Forms.Button canccelButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

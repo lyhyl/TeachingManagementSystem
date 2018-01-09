@@ -33,7 +33,7 @@ namespace TeachingManagementSystem.Model
             Brand = brand;
             IsStudent = isStudent;
             Sex = (SexType)sex;
-            Phone = phone;
+            Phone = phone ?? string.Empty;
         }
 
         public void Dispose()
