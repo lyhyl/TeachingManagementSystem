@@ -44,14 +44,14 @@ namespace TeachingManagementSystem.DAL
         /// </summary>
         /// <param name="connection">SQL连接</param>
         /// <param name="command">命令</param>
-        /// <param name="type">命令类型，默认为Text</param>
         /// <param name="parameters">参数列表，默认为null</param>
+        /// <param name="type">命令类型，默认为Text</param>
         /// <returns>执行结果</returns>
         public static DataTable ExecuteDataTable(
             SqlConnection connection,
             string command,
-            CommandType type = CommandType.Text,
-            SqlParameter[] parameters = null)
+            SqlParameter[] parameters = null,
+            CommandType type = CommandType.Text)
         {
             DataTable data = new DataTable();
             using (var cmd = new SqlCommand(command, connection) { CommandType = type })
@@ -69,14 +69,14 @@ namespace TeachingManagementSystem.DAL
         /// </summary>
         /// <param name="connection">SQL连接</param>
         /// <param name="command">命令</param>
-        /// <param name="type">命令类型，默认为Text</param>
         /// <param name="parameters">参数列表，默认为null</param>
+        /// <param name="type">命令类型，默认为Text</param>
         /// <returns>执行结果的第一行第一列</returns>
         public static Object ExecuteScalar(
             SqlConnection connection,
             string command,
-            CommandType type = CommandType.Text,
-            SqlParameter[] parameters = null)
+            SqlParameter[] parameters = null,
+            CommandType type = CommandType.Text)
         {
             using (var cmd = new SqlCommand(command, connection) { CommandType = type })
             {
@@ -91,14 +91,14 @@ namespace TeachingManagementSystem.DAL
         /// </summary>
         /// <param name="connection">SQL连接</param>
         /// <param name="command">命令</param>
-        /// <param name="type">命令类型，默认为Text</param>
         /// <param name="parameters">参数列表，默认为null</param>
+        /// <param name="type">命令类型，默认为Text</param>
         /// <returns>影响的行数</returns>
         public static int ExecuteNonQuery(
             SqlConnection connection,
             string command,
-            CommandType type = CommandType.Text,
-            SqlParameter[] parameters = null)
+            SqlParameter[] parameters = null,
+            CommandType type = CommandType.Text)
         {
             using (var cmd = new SqlCommand(command, connection) { CommandType = type })
             {
@@ -114,15 +114,15 @@ namespace TeachingManagementSystem.DAL
         /// <param name="connection">SQL连接</param>
         /// <param name="command">命令</param>
         /// <param name="behavior"></param>
-        /// <param name="type">命令类型，默认为Text</param>
         /// <param name="parameters">参数列表，默认为null</param>
+        /// <param name="type">命令类型，默认为Text</param>
         /// <returns></returns>
         public static SqlDataReader ExecuteReader(
             SqlConnection connection,
             string command,
             CommandBehavior behavior = CommandBehavior.CloseConnection,
-            CommandType type = CommandType.Text,
-            SqlParameter[] parameters = null)
+            SqlParameter[] parameters = null,
+            CommandType type = CommandType.Text)
         {
             using (var cmd = new SqlCommand(command, connection) { CommandType = type })
             {

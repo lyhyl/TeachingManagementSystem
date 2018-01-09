@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using TeachingManagementSystem.Common;
 using TeachingManagementSystem.DAL;
 using TeachingManagementSystem.Model;
@@ -34,8 +31,8 @@ namespace TeachingManagementSystem.BLL
                 BLLConfig.DefaultSource);
 
             string cmd = @"INSERT INTO StudentAccount (password,name,college,sex,phone) OUTPUT Inserted.id VALUES (@pw,@n,@c,@s,@p)";
-            var result = SqlHelper.ExecuteScalar(conn, cmd, parameters: new SqlParameter[] {
-                new SqlParameter("@pw", SqlDbType.NVarChar, 50) { Value = EncryptPassword(password) },
+            var result = SqlHelper.ExecuteScalar(conn, cmd, new SqlParameter[] {
+                new SqlParameter("@pw", SqlDbType.NVarChar, 50) { Value = Utilities.EncryptPassword(password) },
                 new SqlParameter("@n", SqlDbType.NVarChar, 50) { Value = name },
                 new SqlParameter("@c", SqlDbType.NVarChar, 50) { Value = college },
                 new SqlParameter("@s", SqlDbType.Int) { Value = (int)sex },
@@ -65,8 +62,8 @@ namespace TeachingManagementSystem.BLL
                 BLLConfig.DefaultSource);
 
             string cmd = @"INSERT INTO TeacherAccount (password,name,brand,sex,phone) OUTPUT Inserted.id VALUES (@pw,@n,@b,@s,@p)";
-            var result = SqlHelper.ExecuteScalar(conn, cmd, parameters: new SqlParameter[] {
-                new SqlParameter("@pw", SqlDbType.NVarChar, 50) { Value = EncryptPassword(password) },
+            var result = SqlHelper.ExecuteScalar(conn, cmd, new SqlParameter[] {
+                new SqlParameter("@pw", SqlDbType.NVarChar, 50) { Value = Utilities.EncryptPassword(password) },
                 new SqlParameter("@n", SqlDbType.NVarChar, 50) { Value = name },
                 new SqlParameter("@b", SqlDbType.NVarChar, 50) { Value = brand },
                 new SqlParameter("@s", SqlDbType.Int) { Value = (int)sex },
@@ -87,8 +84,12 @@ namespace TeachingManagementSystem.BLL
             var result = SqlHelper.ExecuteDataTable(
                 conn, cmd,
                 parameters: new SqlParameter[] {
-                    new SqlParameter("@u", SqlDbType.NVarChar, 50) { Value = id },
-                    new SqlParameter("@p", SqlDbType.NVarChar, 50) { Value = EncryptPassword(password) }
+                    new SqlParameter("@u", SqlDbType.NVarChar, 50) {
+                        Value = Utilities.StuIdConvertToDbId(int.Parse(id)).ToString()
+                    },
+                    new SqlParameter("@p", SqlDbType.NVarChar, 50) {
+                        Value = Utilities.EncryptPassword(password)
+                    }
                 });
 
             if (result.Rows.Count == 1 &&
@@ -116,8 +117,12 @@ namespace TeachingManagementSystem.BLL
             var result = SqlHelper.ExecuteDataTable(
                 conn, cmd,
                 parameters: new SqlParameter[] {
-                    new SqlParameter("@u", SqlDbType.NVarChar, 50) { Value = id },
-                    new SqlParameter("@p", SqlDbType.NVarChar, 50) { Value = EncryptPassword(password) }
+                    new SqlParameter("@u", SqlDbType.NVarChar, 50) {
+                        Value = Utilities.TeaIdConvertToDbId(int.Parse(id)).ToString()
+                    },
+                    new SqlParameter("@p", SqlDbType.NVarChar, 50) {
+                        Value = Utilities.EncryptPassword(password)
+                    }
                 });
 
             if (result.Rows.Count == 1 &&
@@ -134,17 +139,27 @@ namespace TeachingManagementSystem.BLL
                 return null;
         }
 
-        public static IEnumerable<Class> GetAssociatedClasses()
+        public static bool AddClass(Teacher user,
+            string name,
+            string category,
+            string time,
+            string place,
+            int capability,
+            float usualProportion)
         {
+            string cmd = "";
+            var result = SqlHelper.ExecuteNonQuery(user.Connection, cmd, new SqlParameter[] { });
+            return result == 1;
+        }
 
+        public static IEnumerable<Class> GetAssociatedClasses(Student user)
+        {
             return Enumerable.Empty<Class>();
         }
 
-        private static string EncryptPassword(string password)
+        public static IEnumerable<Class> GetAssociatedClasses(Teacher user)
         {
-            MD5CryptoServiceProvider csp = new MD5CryptoServiceProvider();
-            var epswb = csp.ComputeHash(Encoding.Unicode.GetBytes(password));
-            return BitConverter.ToString(epswb).Replace("-", "");
+            return Enumerable.Empty<Class>();
         }
     }
 }

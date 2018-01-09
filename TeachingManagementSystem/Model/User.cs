@@ -15,11 +15,11 @@ namespace TeachingManagementSystem.Model
         public SexType Sex { private set; get; }
         public string Phone { private set; get; }
 
-        protected SqlConnection connection;
+        public SqlConnection Connection { private set; get; }
 
         protected User(SqlConnection conn, string id, string name, SexType sex, string phone)
         {
-            connection = conn;
+            Connection = conn;
             Id = id;
             Name = name;
             Sex = sex;
@@ -28,7 +28,7 @@ namespace TeachingManagementSystem.Model
 
         public void Dispose()
         {
-            connection?.Close();
+            Connection?.Close();
         }
     }
 }

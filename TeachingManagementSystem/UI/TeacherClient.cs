@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeachingManagementSystem.Model;
+using TeachingManagementSystem.UI.TeaFuncUI;
 
 namespace TeachingManagementSystem.UI
 {
@@ -27,6 +28,17 @@ namespace TeachingManagementSystem.UI
         private void Customize()
         {
             Text = $"欢迎{teacher.Name}!(工号{teacher.Id})";
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            using (AddClassDialog addClassDialog = new AddClassDialog(teacher))
+                addClassDialog.ShowDialog();
+            RefreshClassTable();
+        }
+
+        private void RefreshClassTable()
+        {
         }
     }
 }

@@ -12,15 +12,11 @@ using TeachingManagementSystem.Common;
 
 namespace TeachingManagementSystem.UI
 {
-    public partial class StudentRegisterForm : Form
+    public partial class StudentRegisterForm : ExitConfirmForm
     {
-        private bool registered = false;
-
         public StudentRegisterForm()
         {
             InitializeComponent();
-
-            FormClosing += StudentRegisterForm_FormClosing;
         }
 
         /// <summary>
@@ -55,9 +51,14 @@ namespace TeachingManagementSystem.UI
                 MessageBox.Show("请填写性别", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            if(!Utilities.IsVaildPhoneNumber(phoneTextBox.Text))
+            {
+                MessageBox.Show("请填写合法手机号码", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return true;
         }
-             
+
 
         private void registerButton_Click(object sender, EventArgs e)
         {
@@ -71,19 +72,19 @@ namespace TeachingManagementSystem.UI
                 maleRadioButton.Checked ? SexType.Male : SexType.Female,
                 phoneTextBox.Text);
 
-            MessageBox.Show($"请牢记学号: {id}", "注册成功!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            registered = true;
-            Close();
-        }
-
-        private void StudentRegisterForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!registered &&
-                MessageBox.Show("确定?", "取消注册",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.No)
+            if (id > 0)
             {
-                e.Cancel = true;
+                MessageBox.Show(
+                    $"请牢记学号: {Utilities.DbIdConvertToStuId(id)}",
+                    "注册成功!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                NeedConfirmOnExit = false;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("注册失败,请联系系统管理员", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
