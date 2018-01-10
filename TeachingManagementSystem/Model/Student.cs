@@ -13,11 +13,11 @@ namespace TeachingManagementSystem.Model
         public string College { private set; get; }
 
         public Student(SqlConnection conn,
-            string id,
+            int id,
             string name,
             string college,
             SexType sex,
-            string phone) : base(conn,id,name,sex,phone)
+            string phone) : base(conn, id, name, sex, phone)
         {
             College = college;
         }

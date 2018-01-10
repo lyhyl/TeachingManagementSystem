@@ -8,13 +8,13 @@ namespace TeachingManagementSystem.Model
 {
     public class Class
     {
-        public string Id { set; get; }
+        public int Id { set; get; }
         public string Name { set; get; }
-        public string TeacherId { set; get; }
+        public int TeacherId { set; get; }
         public string Category { set; get; }
         public string Time { set; get; }
         public string Place { set; get; }
-        public string Capability { set; get; }
-        public double UsualGradeProportion { set; get; }
+        public int Capability { set; get; }
+        public float UsualGradeProportion { set; get; }
     }
 }

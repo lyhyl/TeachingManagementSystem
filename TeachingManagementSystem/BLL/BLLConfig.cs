@@ -11,5 +11,6 @@ namespace TeachingManagementSystem.BLL
         public static readonly string AdminUserName = "sa";
         public static readonly string AdminPassword = "112358";
         public static readonly string DefaultSource = @"WINGKOU\SQLEXPRESS";
+        public static readonly string DbName = "TMS";
     }
 }

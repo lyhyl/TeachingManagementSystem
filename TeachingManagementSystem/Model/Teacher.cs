@@ -13,7 +13,7 @@ namespace TeachingManagementSystem.Model
         public string Brand { private set; get; }
 
         public Teacher(SqlConnection conn,
-            string id,
+            int id,
             string name,
             string brand,
             SexType sex,

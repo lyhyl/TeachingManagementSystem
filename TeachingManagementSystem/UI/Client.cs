@@ -65,15 +65,15 @@ namespace TeachingManagementSystem.UI
         /// <returns>若成功登陆则返回一个对应的User，否则返回null</returns>
         private User Login()
         {
-            string name = userTextBox.Text;
+            int id = int.Parse(userTextBox.Text);
             string pass = passwordTextBox.Text;
 
             switch (authTypeComboBox.SelectedIndex)
             {
                 case 0:
-                    return Manager.StudentLogin(name, pass);
+                    return StudentManager.Login(id, pass);
                 case 1:
-                    return Manager.TeacherLogin(name, pass);
+                    return TeacherManager.Login(id, pass);
                 default:
                     return null;
             }

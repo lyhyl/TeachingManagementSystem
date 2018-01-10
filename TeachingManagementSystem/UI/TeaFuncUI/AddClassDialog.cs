@@ -25,7 +25,7 @@ namespace TeachingManagementSystem.UI.TeaFuncUI
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (Manager.AddClass(teacher,
+            if (TeacherManager.AddClass(teacher,
                 nameTextBox.Text,
                 categoryTextBox.Text,
                 timeTextBox.Text,
@@ -34,8 +34,8 @@ namespace TeachingManagementSystem.UI.TeaFuncUI
                 (float)usualProNumericUpDown.Value))
             {
                 MessageBox.Show(
-                    "",
-                    "注册成功!",
+                    "成功添加课程",
+                    "成功",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 NeedConfirmOnExit = false;
@@ -43,7 +43,7 @@ namespace TeachingManagementSystem.UI.TeaFuncUI
             }
             else
             {
-                MessageBox.Show("注册失败,请联系系统管理员", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("添加失败,请联系系统管理员", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -65,7 +65,7 @@ namespace TeachingManagementSystem.UI
             if (!ValidateInfo())
                 return;
 
-            int id = Manager.StudentRegister(
+            int id = StudentManager.Register(
                 passwordTextBox.Text,
                 nameTextBox.Text,
                 collegeTextBox.Text,

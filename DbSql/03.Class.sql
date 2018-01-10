@@ -1,7 +1,7 @@
 USE [TMS]
 GO
 
-/****** Object:  Table [dbo].[Class]    Script Date: 1/9/2018 23:17:22 ******/
+/****** Object:  Table [dbo].[Class]    Script Date: 1/10/2018 16:16:24 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -24,10 +24,10 @@ CREATE TABLE [dbo].[Class](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[Class]  WITH CHECK ADD  CONSTRAINT [FK_Class_Class] FOREIGN KEY([id])
+ALTER TABLE [dbo].[Class]  WITH CHECK ADD  CONSTRAINT [FK_Class_TeacherAccount] FOREIGN KEY([tid])
 REFERENCES [dbo].[TeacherAccount] ([id])
 GO
 
-ALTER TABLE [dbo].[Class] CHECK CONSTRAINT [FK_Class_Class]
+ALTER TABLE [dbo].[Class] CHECK CONSTRAINT [FK_Class_TeacherAccount]
 GO
 

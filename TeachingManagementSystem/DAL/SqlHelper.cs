@@ -17,14 +17,14 @@ namespace TeachingManagementSystem.DAL
         /// <param name="pass">密码</param>
         /// <param name="source">数据源</param>
         /// <returns></returns>
-        public static SqlConnection OpenDatabase(string user, string pass, string source)
+        public static SqlConnection OpenDatabase(string user, string pass, string source, string dbname)
         {
             try
             {
                 SqlConnectionStringBuilder connStr = new SqlConnectionStringBuilder()
                 {
                     DataSource = source,
-                    InitialCatalog = "TMS",
+                    InitialCatalog = dbname,
                     UserID = user,
                     Password = pass,
                     //NetworkLibrary = "DBMSSOCN" // only for ip connection
@@ -53,15 +53,23 @@ namespace TeachingManagementSystem.DAL
             SqlParameter[] parameters = null,
             CommandType type = CommandType.Text)
         {
-            DataTable data = new DataTable();
-            using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+            try
             {
-                if (parameters != null)
-                    cmd.Parameters.AddRange(parameters);
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                    adapter.Fill(data);
+                DataTable data = new DataTable();
+                using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        adapter.Fill(data);
+                }
+                return data;
             }
-            return data;
+            catch (Exception e)
+            {
+                // TODO Log exception
+                return null;
+            }
         }
 
         /// <summary>
@@ -78,11 +86,19 @@ namespace TeachingManagementSystem.DAL
             SqlParameter[] parameters = null,
             CommandType type = CommandType.Text)
         {
-            using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+            try
             {
-                if (parameters != null)
-                    cmd.Parameters.AddRange(parameters);
-                return cmd.ExecuteScalar();
+                using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+                    return cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO Log exception
+                return null;
             }
         }
 
@@ -100,11 +116,19 @@ namespace TeachingManagementSystem.DAL
             SqlParameter[] parameters = null,
             CommandType type = CommandType.Text)
         {
-            using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+            try
             {
-                if (parameters != null)
-                    cmd.Parameters.AddRange(parameters);
-                return cmd.ExecuteNonQuery();
+                using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO Log exception
+                return 0;
             }
         }
 
@@ -124,11 +148,19 @@ namespace TeachingManagementSystem.DAL
             SqlParameter[] parameters = null,
             CommandType type = CommandType.Text)
         {
-            using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+            try
             {
-                if (parameters != null)
-                    cmd.Parameters.AddRange(parameters);
-                return cmd.ExecuteReader(behavior);
+                using (var cmd = new SqlCommand(command, connection) { CommandType = type })
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+                    return cmd.ExecuteReader(behavior);
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO Log exception
+                return null;
             }
         }
     }
