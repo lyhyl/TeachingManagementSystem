@@ -1,6 +1,6 @@
-﻿namespace TeachingManagementSystem.UI.TeaFuncUI
+﻿namespace TeachingManagementSystem.UI.TeacherFunctionalUI
 {
-    partial class AddClassDialog
+    partial class ClassDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.addButton = new System.Windows.Forms.Button();
+            this.acceptButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.capabilityNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usualProNumericUpDown)).BeginInit();
@@ -173,15 +173,15 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "平时成绩权重";
             // 
-            // addButton
+            // acceptButton
             // 
-            this.addButton.Location = new System.Drawing.Point(12, 168);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(179, 23);
-            this.addButton.TabIndex = 6;
-            this.addButton.Text = "确定";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.acceptButton.Location = new System.Drawing.Point(12, 168);
+            this.acceptButton.Name = "acceptButton";
+            this.acceptButton.Size = new System.Drawing.Size(179, 23);
+            this.acceptButton.TabIndex = 6;
+            this.acceptButton.Text = "确定";
+            this.acceptButton.UseVisualStyleBackColor = true;
+            this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
             // cancelButton
             // 
@@ -193,15 +193,15 @@
             this.cancelButton.Text = "取消";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // AddClassDialog
+            // ClassDialog
             // 
-            this.AcceptButton = this.addButton;
+            this.AcceptButton = this.acceptButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(284, 201);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -214,7 +214,7 @@
             this.Controls.Add(this.categoryTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label1);
-            this.Name = "AddClassDialog";
+            this.Name = "ClassDialog";
             this.Text = "新增课程";
             ((System.ComponentModel.ISupportInitialize)(this.capabilityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usualProNumericUpDown)).EndInit();
@@ -237,7 +237,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Button cancelButton;
     }
 }

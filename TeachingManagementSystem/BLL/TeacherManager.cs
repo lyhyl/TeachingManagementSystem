@@ -78,6 +78,28 @@ namespace TeachingManagementSystem.BLL
             }
         }
 
+        public static bool UpdateClass(Teacher user,
+            int clsid,
+            string name,
+            string category,
+            string time,
+            string place,
+            int capability,
+            float usualProportion)
+        {
+            var cmd = "UPDATE Class SET name=@n,category=@c,time=@t,place=@p,capability=@ca,usualProportion=@u WHERE id=@i";
+            var result = SqlHelper.ExecuteNonQuery(user.Connection, cmd, new SqlParameter[] {
+                new SqlParameter("@n", SqlDbType.NVarChar, 50) { Value = name },
+                new SqlParameter("@c", SqlDbType.NVarChar, 50) { Value = category },
+                new SqlParameter("@t", SqlDbType.NVarChar, 50) { Value = time },
+                new SqlParameter("@p", SqlDbType.NVarChar, 50) { Value = place },
+                new SqlParameter("@ca", SqlDbType.Int) { Value = capability },
+                new SqlParameter("@u", SqlDbType.Float) { Value = usualProportion },
+                new SqlParameter("@i", SqlDbType.Int) { Value = clsid }
+            });
+            return result == 1;
+        }
+
         public static bool AddClass(Teacher user,
             string name,
             string category,

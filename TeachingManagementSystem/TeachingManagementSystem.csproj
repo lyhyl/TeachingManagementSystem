@@ -94,11 +94,11 @@
     <Compile Include="UI\TeacherRegisterForm.Designer.cs">
       <DependentUpon>TeacherRegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TeaFuncUI\AddClassDialog.cs">
+    <Compile Include="UI\TeacherFunctionalUI\ClassDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TeaFuncUI\AddClassDialog.Designer.cs">
-      <DependentUpon>AddClassDialog.cs</DependentUpon>
+    <Compile Include="UI\TeacherFunctionalUI\ClassDialog.Designer.cs">
+      <DependentUpon>ClassDialog.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
@@ -124,8 +124,8 @@
     <EmbeddedResource Include="UI\TeacherRegisterForm.resx">
       <DependentUpon>TeacherRegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TeaFuncUI\AddClassDialog.resx">
-      <DependentUpon>AddClassDialog.cs</DependentUpon>
+    <EmbeddedResource Include="UI\TeacherFunctionalUI\ClassDialog.resx">
+      <DependentUpon>ClassDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -141,7 +141,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UI\StuFuncUI\" />
+    <Folder Include="UI\StudentFunctionalUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,7 +38,8 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.addClassToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.updateClassToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -100,7 +101,6 @@
             // 
             this.classDataGridView.AllowUserToAddRows = false;
             this.classDataGridView.AllowUserToDeleteRows = false;
-            this.classDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.classDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.classDataGridView.Location = new System.Drawing.Point(0, 0);
             this.classDataGridView.Name = "classDataGridView";
@@ -114,7 +114,8 @@
             this.toolStripLabel1,
             this.toolStripComboBox1,
             this.toolStripSeparator1,
-            this.toolStripButton1});
+            this.addClassToolStripButton,
+            this.updateClassToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(270, 25);
@@ -137,15 +138,25 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton1
+            // addClassToolStripButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "新增课程";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.addClassToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addClassToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addClassToolStripButton.Image")));
+            this.addClassToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addClassToolStripButton.Name = "addClassToolStripButton";
+            this.addClassToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.addClassToolStripButton.Text = "新增课程";
+            this.addClassToolStripButton.Click += new System.EventHandler(this.addClassToolStripButton_Click);
+            // 
+            // updateClassToolStripButton
+            // 
+            this.updateClassToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.updateClassToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("updateClassToolStripButton.Image")));
+            this.updateClassToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.updateClassToolStripButton.Name = "updateClassToolStripButton";
+            this.updateClassToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.updateClassToolStripButton.Text = "修改课程";
+            this.updateClassToolStripButton.Click += new System.EventHandler(this.updateClassToolStripButton_Click);
             // 
             // tabPage3
             // 
@@ -187,9 +198,10 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton addClassToolStripButton;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView classDataGridView;
+        private System.Windows.Forms.ToolStripButton updateClassToolStripButton;
     }
 }
