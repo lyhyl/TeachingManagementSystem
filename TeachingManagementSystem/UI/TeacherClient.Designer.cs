@@ -41,6 +41,7 @@
             this.addClassToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.updateClassToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.deleeteClassToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -115,6 +116,7 @@
             this.toolStripComboBox1,
             this.toolStripSeparator1,
             this.addClassToolStripButton,
+            this.deleeteClassToolStripButton,
             this.updateClassToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
@@ -167,6 +169,16 @@
             this.tabPage3.Text = "登记分数";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // deleeteClassToolStripButton
+            // 
+            this.deleeteClassToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.deleeteClassToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("deleeteClassToolStripButton.Image")));
+            this.deleeteClassToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleeteClassToolStripButton.Name = "deleeteClassToolStripButton";
+            this.deleeteClassToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.deleeteClassToolStripButton.Text = "删除课程";
+            this.deleeteClassToolStripButton.Click += new System.EventHandler(this.deleeteClassToolStripButton_Click);
+            // 
             // TeacherClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,5 +215,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView classDataGridView;
         private System.Windows.Forms.ToolStripButton updateClassToolStripButton;
+        private System.Windows.Forms.ToolStripButton deleeteClassToolStripButton;
     }
 }

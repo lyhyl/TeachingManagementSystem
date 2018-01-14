@@ -98,5 +98,25 @@ namespace TeachingManagementSystem.UI
                 classDialog.ShowDialog();
             RefreshClassTable();
         }
+
+        private void deleeteClassToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (classDataGridView.CurrentRow == null)
+                return;
+            var r = classDataGridView.CurrentRow.Cells;
+            int clsid = Convert.ToInt32(r[0].Value);
+            if (MessageBox.Show($"确定删除课程{clsid}?", "确认",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (TeacherManager.DeleteClass(teacher, clsid))
+                {
+                    RefreshClassTable();
+                }
+                else
+                {
+                    MessageBox.Show("");
+                }
+            }
+        }
     }
 }

@@ -100,6 +100,15 @@ namespace TeachingManagementSystem.BLL
             return result == 1;
         }
 
+        public static bool DeleteClass(Teacher user, int clsid)
+        {
+            var cmd = "DELETE FROM Class WHERE id=@i";
+            var result = SqlHelper.ExecuteNonQuery(user.Connection, cmd, new SqlParameter[] {
+                new SqlParameter("@i", SqlDbType.Int) { Value = clsid }
+            });
+            return result == 1;
+        }
+
         public static bool AddClass(Teacher user,
             string name,
             string category,
